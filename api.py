@@ -22,16 +22,7 @@ def api_model():
     '''Grab predictions from model server '''
     print("Here  starting Api Model ! ")
     count=sv.serveit()
-    count=2
     return str(count)
-
-@app.route('/image')
-def get_image():
-    if request.args.get('type') == '1':
-        filename = './output/breakwaterFull.jpg'
-    else:
-        filename = 'breakwaterFull.jpg'
-    return send_file(filename, mimetype='image/jpg')
 
 
 @app.route('/', methods=['GET'])
