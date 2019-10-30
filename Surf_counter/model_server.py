@@ -9,18 +9,17 @@ class ServeModel:
     def __init__(self):
         self.s3=s3pushpull()
         #model_path = "./models/yolo.h5"
-        self.model_path = "./models/yolo-tiny.h5"
-            
+        self.model_path = "./models/yolo-tiny.h5"            
         self.output_path = "./output/breakwaterFull.jpg"
         print("Loading models")
         self.detector = ObjectDetection()
         self.detector.setModelTypeAsYOLOv3()
         self.detector.setModelTypeAsTinyYOLOv3()
         self.detector.setModelPath(self.model_path)
-        self.detector.loadModel()
         print("Done Loading Model")
     
     def serveit(self):
+        self.detector.loadModel()
         print("Here in Serveit")
         self.surfimages3 = list(self.s3.get_matching_s3_keys(prefix='S3:/data/'))
         self.surfimages_local = [x[4:] for x in self.surfimages3]
