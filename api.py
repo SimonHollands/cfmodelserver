@@ -5,15 +5,16 @@ from Surf_counter.model_server import ServeModel
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
-sv=ServeModel()
+#sv=ServeModel()
 
 @app.route('/model')
 def api_model():
     '''Grab predictions from model server '''
     print("I am Here 1")
-    count=sv.serveit()
+    #count=sv.serveit()
+    count=2
     return str(count)
-    
+
 @app.route('/', methods=['GET'])
 def home():
     '''Home page'''
