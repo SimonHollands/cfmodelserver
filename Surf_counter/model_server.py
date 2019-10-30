@@ -34,7 +34,7 @@ class ServeModel:
 
         detection_ = self.detector.detectObjectsFromImage(input_image=self.surfimages_local[0], output_image_path=self.output_path,
         minimum_percentage_probability=30)
-        self.s3.upload_aws(self.output_path, 'S3:/current_prediction/pred.jpg'+)
+        self.s3.upload_aws(self.output_path, 'S3:/current_prediction/pred.jpg')
         
         not_allowed=['airplane','bicycle']
         count=0
