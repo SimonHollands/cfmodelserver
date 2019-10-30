@@ -17,18 +17,19 @@ app.config["DEBUG"] = True
 det=Detect()
 #det.pull_images_s3(SpotUrls.venice_static)
 
-@app.route('/api/v1/breakwater/count')
-def api_surfercount():
+@app.route('/model')
+def api_model():
+    return (15)
     #det.clear_data_dir()
     #Find the video
     #url=SpotUrls.lookup['venice_beach']
     #v=ScrapeVideoLinks(url)
     #link=v.get_link()
     #det.pull_images_s3(SpotUrls.venice_static)
-    print("Made it herrrrre")
-    n_surfers=det.detection()
+    #print("Made it herrrrre")
+    #n_surfers=det.detection()
     #print ("THERE ARE N SURFERS ", n_surfers)
-    return str(n_surfers)
+    #return str(n_surfers)
     #return str(23)
     
     #output=f'''There are currently {surfer_count} surfers at the Breakwater'''
