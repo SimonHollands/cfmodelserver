@@ -8,7 +8,6 @@ from s3pushpull import s3pushpull
 class ServeModel:
     def __init__(self):
         self.s3=s3pushpull()
-        #model_path = "./models/yolo.h5"
         self.model_path = "./models/yolo-tiny.h5"            
         self.output_path = "./output/breakwaterFull.jpg"
         print("Loading models")
