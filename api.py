@@ -25,6 +25,15 @@ def api_model():
     count=2
     return str(count)
 
+@app.route('/image')
+def get_image():
+    if request.args.get('type') == '1':
+        filename = './output/breakwaterFull.jpg'
+    else:
+        filename = 'breakwaterFull.jpg'
+    return send_file(filename, mimetype='image/jpg')
+
+
 @app.route('/', methods=['GET'])
 def home():
     print("Here  at home ! ")
