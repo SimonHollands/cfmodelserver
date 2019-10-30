@@ -1,5 +1,4 @@
 from imageai.Detection import ObjectDetection
-#import imageai
 from os import listdir
 from os.path import isfile, join
 import os, shutil 
@@ -40,9 +39,6 @@ class ServeModel:
 
         detection_ = self.detector.detectObjectsFromImage(input_image=self.surfimages_local[0],output_image_path=self.output_path,
         minimum_percentage_probability=30)
-
-        # s3=s3pushpull()
-        # d=list(s3.get_matching_s3_keys(prefix='S3:/data/breakwater'))
 
         not_allowed=['airplane','bicycle']
         count=0
