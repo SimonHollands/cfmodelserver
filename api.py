@@ -9,12 +9,13 @@ sv=ServeModel()
 
 @app.route('/model')
 def api_model():
-    '''Grab predictions from model server'''
+    '''Grab predictions from model server '''
     count=sv.serveit()
     return count
     
 @app.route('/', methods=['GET'])
 def home():
+    '''Home page'''
     return '''<h1>Surfing a Deep Learning Model</h1>
 <p>A Yolo Model for detecting surfers.</p>'''
 
