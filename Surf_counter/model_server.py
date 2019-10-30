@@ -5,9 +5,6 @@ from os.path import isfile, join
 import os, shutil 
 import urllib.request
 
-url = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
-urllib.request.urlretrieve(url, 'models/yolo.h5')
-
 class ServeModel:
     model_path = "./models/yolo.h5"
     output_path = "./output/breakwaterFull.jpg"
