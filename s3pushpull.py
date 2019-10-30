@@ -97,10 +97,15 @@ class s3pushpull:
             # The S3 API response is a large blob of metadata.
             # 'Contents' contains information about the listed objects.
             resp = s3.list_objects_v2(**kwargs)
-            for obj in resp['Contents']:
-                key = obj['Key']
-                if key.startswith(prefix) and key.endswith(suffix):
-                    yield key
+
+            if 'Contents' in resp:
+                for obj in resp['Contents']:
+                    key = obj['Key']
+                    if key.startswith(prefix) and key.endswith(suffix):
+                        yield key
+            else:
+                print("Emptylist")
+                break
 
             # The S3 API is paginated, returning up to 1000 keys at a time.
             # Pass the continuation token into the next response, until we
@@ -112,10 +117,11 @@ class s3pushpull:
 
 
 
-#s3=s3pushpull()
-#s3.upload_aws_obj('/Users/hollands/dev/Surf-counter/models/yolo.h5', 'S3:/models/yolo.h5')
+# s3=s3pushpull()
+# #s3.upload_aws_obj('/Users/hollands/dev/Surf-counter/models/yolo.h5', 'S3:/models/yolo.h5')
 
-#s3.download_aws('data/frameyewwwwwW.jpg','S3:/data/frame5394.jpg')
+# s3.download_aws('data/frameyewwwwwW.jpg','S3:/data/frame5394.jpg')
+# print(list(s3.get_matching_s3_keys(prefix='S3:/data/')))
 
 
 #Push the models up:
