@@ -96,11 +96,16 @@ class s3pushpull:
 
             # The S3 API response is a large blob of metadata.
             # 'Contents' contains information about the listed objects.
-            resp = s3.list_objects_v2(**kwargs)
-            for obj in resp['Contents']:
-                key = obj['Key']
-                if key.startswith(prefix) and key.endswith(suffix):
-                    yield key
+            resp = self.s3.list_objects_v2(**kwargs)
+
+            if 'Contents' in resp:
+                for obj in resp['Contents']:
+                    key = obj['Key']
+                    if key.startswith(prefix) and key.endswith(suffix):
+                        yield key
+            else:
+                print("Emptylist")
+                break
 
             # The S3 API is paginated, returning up to 1000 keys at a time.
             # Pass the continuation token into the next response, until we
@@ -110,53 +115,3 @@ class s3pushpull:
             except KeyError:
                 break
 
-
-
-#s3=s3pushpull()
-#s3.upload_aws_obj('/Users/hollands/dev/Surf-counter/models/yolo.h5', 'S3:/models/yolo.h5')
-
-#s3.download_aws('data/frameyewwwwwW.jpg','S3:/data/frame5394.jpg')
-
-
-#Push the models up:
-
-#s3.upload_aws('models/yolo.h5', 'S3:/models/yolo.h5')
-
-
-#s3=s3pushpull()
-#d=list(s3.get_matching_s3_keys(prefix='S3:/data/'))
-#s3.download_aws('data/frameyewwwwwW.jpg',d[0])
-
-
-# ACCESS_KEY = os.environ['AWS_IAM_ACCESS_KEY'] #I think this is the EKC
-# SECRET_KEY =os.environ['AWS_IAM_SECRET_KEY'] #I think this is the admnin?
-
-# # s3=boto3.client('s3', aws_access_key_id=ACCESS_KEY,
-# #                             aws_secret_access_key=SECRET_KEY)
-
-
-#s3=s3pushpull()
-#d=list(s3.get_matching_s3_keys(prefix='S3:/data/'))
-#s3.download_aws('data/frameyewwwwwW.jpg',d[0])
-
-#print(d)
-
-
-# s3.delete_files(Key=d[0])
-# d=list(s3.get_matching_s3_keys(prefix='S3:/data/'))
-# print(d)
-
-# s3.upload_aws('data/frame7216.jpg','S3:/data/frame7216.jpg')
-# k=list(s3.get_matching_s3_keys(prefix='S3:/data/'))
-# print('current list of files')
-# print(k)
-# s3b = boto3.resource('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
-# s3b.Object('surfcounter14367', 'S3:/data/frame7216.jpg').delete()
-# print('current list of files: After deletion')
-# k=list(s3.get_matching_s3_keys(prefix='S3:/data/'))
-# print(k)
-
-
-#s3b = boto3.resource('s3', aws_access_key_id=self.ACCESS_KEY,
-#                            aws_secret_access_key=self.SECRET_KEY))
-#s3b.Object('surfcounter14367', 'S3:/data/frame7216.jpg').delete()
