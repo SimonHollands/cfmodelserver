@@ -12,10 +12,6 @@ class ServeModel:
         self.model_path = "./models/yolo-tiny.h5"
             
         self.output_path = "./output/breakwaterFull.jpg"
-        print("reading yolo model")
-        #url = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
-        self.url = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'
-        urllib.request.urlretrieve(self.url, self.model_path)
         print("Loading models")
         self.detector = ObjectDetection()
         self.detector.setModelTypeAsYOLOv3()
@@ -25,6 +21,7 @@ class ServeModel:
         print("Done Loading Model")
     
     def serveit(self):
+        print("Here in Serveit")
         self.surfimages3 = list(self.s3.get_matching_s3_keys(prefix='S3:/data/'))
         self.surfimages_local = [x[4:] for x in self.surfimages3]
         print("Local images: ")
