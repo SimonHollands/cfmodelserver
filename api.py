@@ -21,7 +21,7 @@ sv=ServeModel()
 def api_model():
     '''Grab predictions from model server '''
     print("Here  starting Api Model ! ")
-    #count=sv.serveit()
+    count=sv.serveit()
     count=2
     return str(count)
 
