@@ -12,7 +12,7 @@ def api_model():
     '''Grab predictions from model server '''
     #count=sv.serveit()
     count=1
-    return count
+    return "count"
     
 @app.route('/', methods=['GET'])
 def home():
