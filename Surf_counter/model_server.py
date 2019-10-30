@@ -12,17 +12,17 @@ class ServeModel:
     output_path = "./output/breakwaterFull.jpg"
     print("reading yolo model")
     #url = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
-    url = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'
+    #url = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5'
     
-    urllib.request.urlretrieve(url, model_path)
+    #urllib.request.urlretrieve(url, model_path)
     print("Done reading model")
 
     print("Loading models")
-    detector = ObjectDetection()
-    #detector.setModelTypeAsYOLOv3()
-    detector.setModelTypeAsTinyYOLOv3()
-    detector.setModelPath(model_path)
-    detector.loadModel()
+    # detector = ObjectDetection()
+    # #detector.setModelTypeAsYOLOv3()
+    # detector.setModelTypeAsTinyYOLOv3()
+    # detector.setModelPath(model_path)
+    # detector.loadModel()
     print("Done Loading Model")
 
     def __init__(self):
