@@ -8,20 +8,22 @@ import urllib.request
 class ServeModel:
     model_path = "./models/yolo.h5"
     output_path = "./output/breakwaterFull.jpg"
-
+    print("reading yolo model")
     url = 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'
     urllib.request.urlretrieve(url, model_path)
-
-    detector = ObjectDetection()
-    detector.setModelTypeAsYOLOv3()
-    detector.setModelPath(model_path)
-    detector.loadModel()
+    print("Done reading model")
 
     def __init__(self):
         self.surfimages = ['./data/breakwater/'+ f for f in listdir('./data/breakwater') if f[0] !='.' and isfile(join('./data/breakwater', f))]
     
     def serveit(self):
-        print("I have entered the server")
+        print("Loading models")
+        detector = ObjectDetection()
+        detector.setModelTypeAsYOLOv3()
+        detector.setModelPath(self.model_path)
+        detector.loadModel()
+
+        print("Done")
         self.surfimages = ['./data/breakwater/'+ f for f in listdir('./data/breakwater') if f[0] !='.' and isfile(join('./data/breakwater', f))]
         detection_ = self.detector.detectObjectsFromImage(input_image=self.surfimages[0],output_image_path=self.output_path,
         minimum_percentage_probability=30)
