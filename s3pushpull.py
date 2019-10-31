@@ -96,7 +96,7 @@ class s3pushpull:
 
             # The S3 API response is a large blob of metadata.
             # 'Contents' contains information about the listed objects.
-            resp = self.s3.list_objects_v2(**kwargs)
+            resp = s3.list_objects_v2(**kwargs)
 
             if 'Contents' in resp:
                 for obj in resp['Contents']:
