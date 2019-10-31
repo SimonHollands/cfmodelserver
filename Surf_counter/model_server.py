@@ -6,15 +6,19 @@ import urllib.request
 from s3pushpull import s3pushpull
 
 class ServeModel:
-    def __init__(self, model='yolo-tiny.h5'):
+    def __init__(self,app_model):
         self.s3=s3pushpull()
-        self.model_path = "./models/yolo-tiny.h5"            
+        self.model_path = "./models/"+app_model            
         self.output_path = "pred.jpg"
-        
+
         print("Loading models")
         self.detector = ObjectDetection()
-        self.detector.setModelTypeAsYOLOv3()
-        self.detector.setModelTypeAsTinyYOLOv3()
+        
+        if app_model='yolo-tiny.h5':
+            self.detector.setModelTypeAsTinyYOLOv3()
+        else:
+            self.detector.setModelTypeAsYOLOv3()
+            
         self.detector.setModelPath(self.model_path)
         print("Done Loading Model")
     
