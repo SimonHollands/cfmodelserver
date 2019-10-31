@@ -3,6 +3,7 @@ from flask import request, jsonify
 from flask import send_file
 from Surf_counter.model_server import ServeModel
 import urllib.request
+import os
 #######
 ##Description
 #######
