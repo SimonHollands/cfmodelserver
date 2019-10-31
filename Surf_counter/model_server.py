@@ -31,6 +31,7 @@ class ServeModel:
             print (s3image[4:])
 
             self.s3.download_aws(s3image[4:],s3image)
+            print("WTF JUST DOWNLOADED!!!!!!!!!!!!!!!!")
 
         detection_ = self.detector.detectObjectsFromImage(input_image=self.surfimages_local[0], output_image_path=self.output_path,
         minimum_percentage_probability=30)
