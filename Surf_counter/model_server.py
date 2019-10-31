@@ -14,11 +14,11 @@ class ServeModel:
         print("Loading models")
         self.detector = ObjectDetection()
         
-        if app_model='yolo-tiny.h5':
+        if app_model=='yolo-tiny.h5':
             self.detector.setModelTypeAsTinyYOLOv3()
         else:
             self.detector.setModelTypeAsYOLOv3()
-            
+
         self.detector.setModelPath(self.model_path)
         print("Done Loading Model")
     

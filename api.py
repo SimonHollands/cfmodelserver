@@ -7,7 +7,8 @@ import os
 #######
 ##Description for the app
 #######
-app_model='yolo-tiny.h5'
+
+app_model='yolo.h5'
 
 model_links={'yolo-tiny.h5':'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5',
              'yolo.h5': 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'}
@@ -25,7 +26,7 @@ sv=ServeModel()
 def api_model():
     '''Grab predictions from model server '''
     print("Here  starting Api Model ! ")
-    count=sv.serveit()
+    count=sv.serveit(app_model)
     return str(count)
 
 @app.route('/', methods=['GET'])
