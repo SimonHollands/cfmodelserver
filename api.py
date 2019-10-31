@@ -20,13 +20,13 @@ app.config["DEBUG"] = True
 
 print("Read Model")
 urllib.request.urlretrieve(model_links[app_model], model_path)
-sv=ServeModel()
+sv=ServeModel(app_model)
 
 @app.route('/model')
 def api_model():
     '''Grab predictions from model server '''
     print("Here  starting Api Model ! ")
-    count=sv.serveit(app_model)
+    count=sv.serveit()
     return str(count)
 
 @app.route('/', methods=['GET'])
