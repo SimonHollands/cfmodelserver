@@ -6,10 +6,11 @@ import urllib.request
 from s3pushpull import s3pushpull
 
 class ServeModel:
-    def __init__(self):
+    def __init__(self, model='yolo-tiny.h5'):
         self.s3=s3pushpull()
         self.model_path = "./models/yolo-tiny.h5"            
         self.output_path = "pred.jpg"
+        
         print("Loading models")
         self.detector = ObjectDetection()
         self.detector.setModelTypeAsYOLOv3()
@@ -20,18 +21,15 @@ class ServeModel:
     def serveit(self):
         self.detector.loadModel()
         print("Here in Serveit")
-        self.surfimages3 = list(self.s3.get_matching_s3_keys(prefix='S3:/data/'))
+        self.surfimages3 = list(self.s3.get_matching_s3_keys(prefix='S3:/data/breakwater'))
         self.surfimages_local = [x[4:] for x in self.surfimages3]
         print("Local images: ")
         print(self.surfimages_local )
 
         for s3image in self.surfimages3[:1]:
-            print("Trying to download:")
             print (s3image)
             print (s3image[4:])
-
             self.s3.download_aws(s3image[4:],s3image)
-            print("WTF JUST DOWNLOADED!!!!!!!!!!!!!!!!")
 
         detection_ = self.detector.detectObjectsFromImage(input_image=self.surfimages_local[0], output_image_path=self.output_path,
         minimum_percentage_probability=30)

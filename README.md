@@ -1,6 +1,2 @@
-# crowdfactor
-# crowdfactor2
-# crowdfactor2
-# crowdfactor2
-# crowdfactor3
-# cfmodelserver
+# Serve a Yolo Model for the CrowdFactor App
+* [CrowdFactor](https://crowdfactor.herokuapp.com/) - CrowdFactor Deployed on Heroku

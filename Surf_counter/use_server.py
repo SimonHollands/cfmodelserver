@@ -1,8 +1,9 @@
-import urllib.request, urllib2
+import urllib.request
 
-url = "https://cfmodelserver.herokuapp.com/model"
-x=urllib.Rquest('https://cfmodelserver.herokuapp.com/model')
+response = urllib.request.urlopen('https://cfmodelserver.herokuapp.com/model')
+
+print(response.read())
 
 
-print("I just hit the server, waaaaaapahh")
-print(f'''There are {x} Surfers at Venice''')
+# print("I just hit the server, waaaaaapahh")
+# print(f'''There are {x} Surfers at Venice''')
