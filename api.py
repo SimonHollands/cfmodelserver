@@ -8,7 +8,7 @@ import os
 ##Description for the app
 #######
 
-app_model='yolo.h5'
+app_model='yolo-tiny.h5'
 
 model_links={'yolo-tiny.h5':'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5',
              'yolo.h5': 'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5'}
