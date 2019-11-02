@@ -7,6 +7,7 @@ import os
 #######
 ##Description for the app
 #######
+
 app_model='yolo-tiny.h5'
 
 model_links={'yolo-tiny.h5':'https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo-tiny.h5',
@@ -19,7 +20,7 @@ app.config["DEBUG"] = True
 
 print("Read Model")
 urllib.request.urlretrieve(model_links[app_model], model_path)
-sv=ServeModel()
+sv=ServeModel(app_model)
 
 @app.route('/model')
 def api_model():
