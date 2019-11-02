@@ -24,15 +24,13 @@ class ServeModel:
     
     def serveit(self):
         self.detector.loadModel()
-        print("Here in Serveit")
-        self.surfimages3 = list(self.s3.get_matching_s3_keys(prefix='S3:/data/breakwater'))
+        #self.surfimages3 = list(self.s3.get_matching_s3_keys(prefix='S3:/data/breakwater'))
+        self.surfimages3=['S3:/data/breakwater/frame_last.jpg']
         self.surfimages_local = [x[4:] for x in self.surfimages3]
         print("Local images: ")
         print(self.surfimages_local )
 
         for s3image in self.surfimages3[:1]:
-            print (s3image)
-            print (s3image[4:])
             self.s3.download_aws(s3image[4:],s3image)
 
         detection_ = self.detector.detectObjectsFromImage(input_image=self.surfimages_local[0], output_image_path=self.output_path,
