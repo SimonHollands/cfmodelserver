@@ -38,4 +38,4 @@ def home():
 <p>A Yolo Model for detecting surfers.</p>'''
 
 if __name__ == '__main__':
-    app.run(threaded=False,use_reloader=False)
+    app.run(threaded=False,use_reloader=False, host="0.0.0.0", port=80)
