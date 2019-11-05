@@ -25,13 +25,11 @@ print("Read Model")
 urllib.request.urlretrieve(model_links[app_model], model_path)
 sv = ServeModel(app_model)
 
-
 @app.route("/model/<surfbreak>")
 def api_model(surfbreak):
     """Grab predictions from model server """
-    count = sv.serveit(s3key_for_img="S3:/data/" + surfbreak + "/frame_last.jpg")
+    count = sv.serveit(surfbreak=surfbreak)
     return str(count)
-
 
 @app.route("/", methods=["GET"])
 def home():
