@@ -21,9 +21,12 @@ class ServeModel:
         self.detector.setModelPath(self.model_path)
 
     def serveit(self, surfbreak):
-        self.s3key_for_img="S3:/data/" + surfbreak + "/frame_last.jpg",
+        self.s3key_for_img="S3:/data/" + surfbreak + "/frame_last.jpg"
         self.detector.loadModel()
         self.surfimages3 = [self.s3key_for_img]
+        
+        print("hehehehehhahh")
+        print(self.surfimages3)
 
         self.surfimages_local = [x[4:] for x in self.surfimages3]
         print("Local images: ")

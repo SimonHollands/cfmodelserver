@@ -28,16 +28,13 @@ class Detect:
     print("I am here 3 ")
     detector.loadModel()
 
-    def __init__(self):
-        self.surfimages = [
-            "./data/breakwater/" + f
-            for f in listdir("./data/breakwater")
-            if f[0] != "." and isfile(join("./data/breakwater", f))
+    def __init__(self,surfbreak='breakwater'):
+        self.surfbreak_pathl="./data/"+ surfbreak
+        self.surfimages = [self.surfbreak_pathl + f
+            for f in listdir(self.surfbreak_pathl)
+            if f[0] != "." and isfile(join(self.surfbreak_pathl, f))
         ]
         self.current_link = SpotUrls.venice_static
-
-    def load_tensor(self):
-        pass
 
     # ScrapeVideoLinks
     def grab_frames(self):
