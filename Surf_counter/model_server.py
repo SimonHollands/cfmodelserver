@@ -20,9 +20,10 @@ class ServeModel:
             self.detector.setModelTypeAsYOLOv3()
         self.detector.setModelPath(self.model_path)
 
-    def serveit(self, s3key_for_img="S3:/data/breakwater/frame_last.jpg"):
+    def serveit(self, surfbreak):
+        self.s3key_for_img="S3:/data/" + surfbreak + "/frame_last.jpg",
         self.detector.loadModel()
-        self.surfimages3 = [s3key_for_img]
+        self.surfimages3 = [self.s3key_for_img]
 
         self.surfimages_local = [x[4:] for x in self.surfimages3]
         print("Local images: ")
@@ -36,7 +37,7 @@ class ServeModel:
             output_image_path=self.output_path,
             minimum_percentage_probability=30,
         )
-        self.s3.upload_aws(self.output_path, "S3:/current_prediction/pred.jpg")
+        self.s3.upload_aws(self.output_path, "S3:/"+surfbreak+"/current_prediction/pred.jpg")
 
         not_allowed = ["airplane", "bicycle"]
         count = 0
