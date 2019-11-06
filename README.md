@@ -27,3 +27,19 @@ step 6: "Configuration Instance": Under IAM role: select full_s3_access (note I 
 step 7: "Configuration Security Groups": Add rule, choose HTTP
 Step 8: Review and launch (may have to make new keys)
 ```
+
+## Launching Server on EC2 Instance
+```
+Step 1: Go to EC2 page, connect, copy paste SSH into terminal to connect to instance. (Do it from the directory where the keys are)
+$ git clone https://github.com/SimonHollands/cfmodelserver
+$ cd cfmodelserver
+$ sudo pip3 install -r requirements.txt
+$ screen python3 api.py
+```
+press control a, then cnt d to detach screen (allows it to keep running after terminal dies)
+
+## Access API Endpoint
+```
+Find your EC2 instance Public IP
+```
+
