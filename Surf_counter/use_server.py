@@ -1,6 +1,6 @@
 import urllib.request
 
-response = urllib.request.urlopen('https://cfmodelserver.herokuapp.com/model')
+response = urllib.request.urlopen("https://cfmodelserver.herokuapp.com/model")
 
 print(response.read())
 

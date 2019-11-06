@@ -4,3 +4,5 @@
 *.h5
 */explore
 **/explore
+*/.DS_STORE
+**/.DS_STORE
