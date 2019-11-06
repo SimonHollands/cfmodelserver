@@ -16,8 +16,14 @@ S3:/data/{surfbreak}/pred.jpg
 Currently, only venice-breakwater and topanga are available
 ```
 
-## Running on EC2 Instance
+## Setting up an EC2 Instance to serve the model
 ```
-Step 1: 
-Step 2: 
+Step 1: https://us-west-1.console.aws.amazon.com/ec2/
+Step 2: Launch Instance
+Step 3: Search in AWS Marketplace for Deep Learning AMI (I have been using the linux ones)
+Step 4: Select, checkout the pricing then continue.
+Step 5: Choose an instance (m5.large works), Next configure instance details
+step 6: "Configuration Instance": Under IAM role: select full_s3_access (note I created this role in my IAM user)
+step 7: "Configuration Security Groups": Add rule, choose HTTP
+Step 8: Review and launch (may have to make new keys)
 ```
