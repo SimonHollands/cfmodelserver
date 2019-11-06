@@ -12,7 +12,6 @@ class ServeModel:
     def __init__(self, app_model):
         self.s3 = s3pushpull()
         self.model_path = "./models/" + app_model
-        self.output_path = "pred.jpg"
         self.detector = ObjectDetection()
 
         if app_model == "yolo-tiny.h5":
@@ -22,6 +21,7 @@ class ServeModel:
         self.detector.setModelPath(self.model_path)
 
     def serveit(self, surfbreak):
+        self.output_path = "pred.jpg"
         self.s3key_for_img = (f'''S3:/data/{surfbreak}/frame_last.jpg''')
         self.current_jpg = self.s3.download_aws('temp.jpg', self.s3key_for_img)
         self.detector.loadModel()
