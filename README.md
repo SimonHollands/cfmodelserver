@@ -7,6 +7,17 @@
 
 ## Useage
 ```
-The model looks here to make the next prediction:
+The model looks for an image here to make the next prediction:
 S3:/data/{surfbreak}/frame_last.jpg
+
+Predicted images with bounding boxed are saved here: 
+S3:/data/{surfbreak}/pred.jpg
+
+Currently, only venice-breakwater and topanga are available
+```
+
+## Running on EC2 Instance
+```
+Step 1: 
+Step 2: 
 ```
