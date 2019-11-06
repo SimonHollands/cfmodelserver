@@ -13,7 +13,7 @@ S3:/data/{surfbreak}/frame_last.jpg
 Predicted images with bounding boxed are saved here: 
 S3:/data/{surfbreak}/pred.jpg
 
-Currently, only venice-breakwater and topanga are available
+So the api can now work for any break, as long as the data is in the correct place on the other end
 ```
 
 ## Setting up an EC2 Instance to serve the model
