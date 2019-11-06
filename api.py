@@ -6,7 +6,7 @@ import urllib.request
 import os
 
 #######
-##Description for the app
+##Virtual env: cfmodelserver
 #######
 
 app_model = "yolo.h5"
@@ -41,5 +41,5 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(threaded=False,use_reloader=False, host="0.0.0.0", port=80)
-    #app.run(threaded=False, use_reloader=False)
+    #app.run(threaded=False,use_reloader=False, host="0.0.0.0", port=80)
+    app.run(threaded=False, use_reloader=False)
